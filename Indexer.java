@@ -9,13 +9,22 @@ public class Indexer {
 		String path = id;
 		Database db = new Database();
 	    }
-	add(Field newf) { 
-		String fieldName = newf.getFieldName();
-		String fieldValue = newf.getFieldValue();
-		db.add(path, fieldValue);
+
+	add(Field newf) {
+		if (path != null) {
+			String fieldValue = newf.getFieldValue();
+			db.add(path, fieldValue);
+			}
+		}
+
+	remove(Field newf) {
+		if (path != null) {
+			String fieldValue = newf.getFieldValue();
+			db.remove(path, fieldValue);
+			}
 		}
 
 	close() {
+		path = null;
 		}
-
 	}
